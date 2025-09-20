@@ -25,6 +25,10 @@ Calculator& Calculator::calculate(const int& value, const char& operation)
         result *= value;
         break;
     case '/':
+        if (value == 0)
+        {
+            throw invalidArgument();
+        }
         result /= value;
         break;
     default:
@@ -48,6 +52,10 @@ Calculator& Calculator::operator-(int value)
 
 Calculator& Calculator::operator/(int value)
 {
+    if (value == 0)
+    {
+        throw invalidArgument();
+    }
     result /= value;
     return *this;
 }
@@ -62,4 +70,3 @@ void Calculator::print()
 {
     std::cout << result << "\n";
 }
-
