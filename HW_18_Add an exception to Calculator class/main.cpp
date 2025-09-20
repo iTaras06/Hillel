@@ -27,7 +27,6 @@ int calculateExcep(int f, int s, char op)
 
 int main()
 {
-
     Calculator my_calc;
 
     my_calc.calculate(2, '+').calculate(4, '-').calculate(5, '*').calculate(10, '/').getResult();
@@ -67,5 +66,28 @@ int main()
     }
     catch (...) {}
 
+    std::cout << std::endl;
 
+    Calculator my_calc3;
+    my_calc3.setResult(10);
+    my_calc3.print();
+
+    try 
+    {
+        my_calc3.calculate(0, '/');
+    }
+    catch (const calculatorException& ex) 
+    {
+        std::cout << "Caught calculatorException" << std::endl;
+    }
+
+    try
+    {
+	    my_calc3.calculate(5, '%');
+    }
+    catch (const invalidOp& ex)
+    {
+        std::cout << "Caught invalidOp exception" << std::endl;
+    }
+    return 0;
 }
